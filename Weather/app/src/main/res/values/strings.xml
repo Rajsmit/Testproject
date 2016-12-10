@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Weather</string>
+
+   <string name="weatherIcon">icon</string>
+    <string name="city">City</string>
+    <string name="network_error">Network Error occurred</string>
+    <string name="humidity">Humidity:&#160;</string>
+    <string name="wind">Wind:&#160;</string>
+    <string name="refresh">Refresh</string>
+</resources>
