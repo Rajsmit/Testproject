@@ -1,87 +1,64 @@
-# Project Title
+# Weather APP
 
-One Paragraph of project description goes here
+Weather APP is a Android Application which shows the Current Weather Report as well as 5 days weather forcast.
 
-## Getting Started
+# Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Import Project to Android Studio
+  Select File-> Open project -> Select build.gradle file inside Weather Directory.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To Develope/Contribute following tools is required
+  1. Android studio 2.2.2
+  2. Gradle 2.14.1
+  3. Android sdk.
+  4. Android Emulator or Android phone with Developer option enabled
+  
+  To Enable the developer option in Android Phone Go to Settings -> About phone -> Press 7 times Build number to enable developer Option
+  
+###Building Android APK.
+ Command to run to build apk in debug and release mode
+ 
+ >gradle assembleDebug
+ 
+ >gradle assembleRelease.
+ 
+ Build command will create apk inside Directory ..\Weather\app\build\outputs\apk
 
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+####Using Android Studio Ide
+  Select Run -> Run APP to install and run application from Android Studio after importing. 
+####using command line 
+  adb install app-release.apk
+  
 
-Say what the step will be
+### Running the tests
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+To run the test from command line 
+  ./gradlew connectedAndroidTest
+    This will generate the Test Report @ directory Weather\app\build\reports
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Rajesh kumar** - *Initial work* - [Rajsmit](https://github.com/Rajsmit)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Test License.
 
-## Acknowledgments
+## Third party library:
+1. Gson 2.8.0 ( com.google.code.gson:gson:2.8.0 )
+2. Volley 2015.05.28 ( eu.the4thfloor.volley:com.android.volley:2015.05.28 )
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+##Future Enhancement
+
+1. Use GPS to show current location weather info
+2. show full day temperature variation.
+3. city selector to change the city.
+4. use recycler view/list view for forcast layout.
+5. localization and fetch localized weather data.
+6. show days based on timezone of selected country 
+7. Cutome Weatther icons as compared to current openweathermap icon.
