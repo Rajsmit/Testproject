@@ -55,8 +55,10 @@ public class WeatherService {
     }
 
 
-    public void loadWeatherData() {
-        JsonObjectRequest reqCurrent = new JsonObjectRequest(Constants.currentTempUrl, null,
+    public void loadWeatherData( String cityName) {
+        String requestUrl = Constants.currentTempUrl;
+        requestUrl = requestUrl.replace("%s", cityName);
+        JsonObjectRequest reqCurrent = new JsonObjectRequest(requestUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -80,8 +82,10 @@ public class WeatherService {
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             }
         });
+        String requestforcastUrl = Constants.forcastUrl;
+        requestforcastUrl = requestforcastUrl.replace("%s", cityName);
 
-        JsonObjectRequest reqForcast = new JsonObjectRequest(Constants.forcastUrl, null,
+        JsonObjectRequest reqForcast = new JsonObjectRequest(requestforcastUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

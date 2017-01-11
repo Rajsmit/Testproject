@@ -5,16 +5,21 @@ import com.android.volley.toolbox.NetworkImageView;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.zip.Inflater;
 
 import raj.com.weather.model.Daily;
 import raj.com.weather.model.Forcast;
@@ -71,6 +77,8 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
     };
+    private AlertDialog alertDialog;
+    private String mCurrentCity = Constants.cityId;
 
     /**
      * This API will initializa the views of main screen
@@ -155,11 +163,33 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showProgress(false, true);
-                WeatherService.getInstance(WeatherActivity.this).loadWeatherData();
+                WeatherService.getInstance(WeatherActivity.this).loadWeatherData(mCurrentCity);
+            }
+        });
+        mCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show dialog to user input of city.
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(WeatherActivity.this);
+                LayoutInflater inflater = WeatherActivity.this.getLayoutInflater();
+                dialogBuilder.setView(inflater.inflate(R.layout.dialoglayout, null));
+                dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        EditText editText = (EditText) alertDialog.findViewById(R.id.cityname);
+                        showProgress(false, true);
+                        mCurrentCity = editText.getText().toString();
+                        WeatherService.getInstance(WeatherActivity.this).loadWeatherData(mCurrentCity);
+                    }
+            });
+                alertDialog = dialogBuilder.create();
+                EditText editText = (EditText) alertDialog.findViewById(R.id.cityname);
+                alertDialog.show();
             }
         });
         showProgress(false, true);
-        WeatherService.getInstance(this).loadWeatherData();
+        WeatherService.getInstance(this).loadWeatherData(mCurrentCity);
     }
 
     @Override

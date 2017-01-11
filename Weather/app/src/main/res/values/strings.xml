@@ -7,4 +7,5 @@
     <string name="humidity">Humidity:&#160;</string>
     <string name="wind">Wind:&#160;</string>
     <string name="refresh">Refresh</string>
+    <string name="ok">OK</string>
 </resources>
